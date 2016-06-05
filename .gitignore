@@ -1,5 +1,3 @@
-/bin/
-data
 .classpath
 .project
 .settings
@@ -8,3 +6,5 @@ data
 *.iml
 out
 *.txt
+target
+.DS_STORE
