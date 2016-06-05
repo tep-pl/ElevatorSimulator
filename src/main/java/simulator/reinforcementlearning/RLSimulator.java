@@ -1,9 +1,6 @@
 package simulator.reinforcementlearning;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -110,8 +107,8 @@ public class RLSimulator {
 	
 	public static void main(String[] args) throws IOException {
 		Config config = new Config();
-		String projectPath = Paths.get("").toAbsolutePath().toString();
-		config.readFile(projectPath + "/src/main/java/simulator/reinforcementlearning/config.ini");
+		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+		config.readFile(classloader.getResource("rl-config.ini").getPath());
 		
 		if (config.getInt("rand_seed") == -1) {
 			Rand.INSTANCE.setSeed(System.currentTimeMillis());

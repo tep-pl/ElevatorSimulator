@@ -109,7 +109,8 @@ public class RLSimulatorOld {
 	
 	public static void main(String[] args) throws IOException {
 		Config config = new Config();
-		config.readFile("src/simulator/reinforcementlearning/config.ini");
+		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+		config.readFile(classloader.getResource("rl-config.ini").getPath());
 		
 		if (config.getInt("rand_seed") == -1) {
 			Rand.INSTANCE.setSeed(System.currentTimeMillis());
