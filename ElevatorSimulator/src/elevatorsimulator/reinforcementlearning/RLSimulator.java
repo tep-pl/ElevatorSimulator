@@ -3,6 +3,7 @@ package elevatorsimulator.reinforcementlearning;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -109,7 +110,8 @@ public class RLSimulator {
 	
 	public static void main(String[] args) throws IOException {
 		Config config = new Config();
-		config.readFile("src/elevatorsimulator/reinforcementlearning/config.ini");
+		String projectPath = Paths.get("").toAbsolutePath().toString();
+		config.readFile(projectPath + "/ElevatorSimulator/src/elevatorsimulator/reinforcementlearning/config.ini");
 		
 		if (config.getInt("rand_seed") == -1) {
 			Rand.INSTANCE.setSeed(System.currentTimeMillis());
